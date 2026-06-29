@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:#0C1A12;color:#F0EBE0;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    @keyframes navIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease-out,transform .6s ease-out}
+    .reveal.in{opacity:1;transform:translateY(0)}
+    .word{display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .6s ease-out,transform .6s ease-out}
+    .word.in{opacity:1;transform:translateY(0)}
+    .spec-card{transition:transform .3s ease-out,background .3s ease-out}
+    .spec-card:hover{transform:translateY(-4px)}
+    .btn{transition:background .25s ease-out,color .25s ease-out,border-color .25s ease-out}
+    .nav-load{animation:navIn .4s ease-out both}
+  </style>
+</helmet>
+<div style="overflow-x:hidden">
+
+  <!-- NAV -->
+  <nav class="nav-load" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(12,26,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.05)">
+    <div style="max-width:1200px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <div style="display:flex;align-items:center;gap:20px">
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;letter-spacing:.3px">Au <span style="color:#C9A260">Fournil</span> du Sud</div>
+        <span style="display:none;font-size:12px;color:#7A7A6A;border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:5px 12px;letter-spacing:.4px" class="nav-badge">Ouvert 7j/7 · Fermé vendredi</span>
+      </div>
+      <a href="tel:0228031242" class="btn" style="border:1px solid #5AAF7E;color:#5AAF7E;border-radius:4px;padding:10px 20px;font-size:14px;font-weight:500;letter-spacing:.3px" style-hover="background:#5AAF7E;color:#0C1A12">02 28 03 12 42</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header style="position:relative;min-height:100vh;display:flex;align-items:center;background-image:radial-gradient(circle at 1px 1px,rgba(201,162,96,0.06) 1px,transparent 0);background-size:42px 42px;padding:140px 32px 80px">
+    <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22 viewBox=%220 0 100 100%22><g fill=%22none%22 stroke=%22%23C9A260%22 stroke-opacity=%220.07%22 stroke-width=%220.8%22><polygon points=%2250,8 58,35 85,35 63,52 71,79 50,63 29,79 37,52 15,35 42,35%22/><polygon points=%2250,20 55,35 70,35 58,44 63,59 50,51 37,59 42,44 30,35 45,35%22 stroke-opacity=%220.04%22/><line x1=%2250%22 y1=%228%22 x2=%2250%22 y2=%2292%22 stroke-opacity=%220.03%22/><line x1=%228%22 y1=%2250%22 x2=%2292%22 y2=%2250%22 stroke-opacity=%220.03%22/><line x1=%2220%22 y1=%2220%22 x2=%2280%22 y2=%2280%22 stroke-opacity=%220.03%22/><line x1=%2280%22 y1=%2220%22 x2=%2220%22 y2=%2280%22 stroke-opacity=%220.03%22/></g></svg>');background-size:200px 200px;pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;width:100%">
+      <div class="reveal" style="display:inline-block;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#C9A260;border:1px solid rgba(201,162,96,0.35);border-radius:40px;padding:8px 20px;margin-bottom:36px">Boulangerie · Pâtisserie · Snacking</div>
+      <h1 id="heroTitle" style="font-family:'Playfair Display',serif;font-size:clamp(48px,9vw,108px);font-weight:600;line-height:1.02;letter-spacing:-1px;margin-bottom:30px">
+        <span class="word">Au</span> <span class="word">Fournil</span><br><span class="word" style="font-style:italic;color:#5AAF7E">du</span> <span class="word" style="font-style:italic;color:#5AAF7E">Sud</span>
+      </h1>
+      <p class="reveal" style="font-size:15px;color:#7A7A6A;letter-spacing:.5px;margin-bottom:44px">1 Boulevard Salvador Allende, 44800 Saint-Herblain</p>
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:16px">
+        <a href="#specialites" class="btn" style="background:#5AAF7E;color:#0C1A12;border-radius:4px;padding:16px 32px;font-size:15px;font-weight:600;letter-spacing:.3px;border:1px solid #5AAF7E" style-hover="background:#6cc090;border-color:#6cc090">Nos spécialités</a>
+        <a href="#trouver" class="btn" style="border:1px solid rgba(240,235,224,0.5);color:#F0EBE0;border-radius:4px;padding:16px 32px;font-size:15px;font-weight:600;letter-spacing:.3px" style-hover="border-color:#F0EBE0;background:rgba(240,235,224,0.06)">Itinéraire</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SPECIALITES -->
+  <section id="specialites" style="padding:100px 32px;border-top:1px solid rgba(255,255,255,0.05)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="reveal" style="text-align:center;margin-bottom:60px">
+        <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:18px">
+          <span style="width:7px;height:7px;background:#C9A260;transform:rotate(45deg);display:inline-block"></span>
+          <span style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#C9A260">Nos spécialités</span>
+          <span style="width:7px;height:7px;background:#C9A260;transform:rotate(45deg);display:inline-block"></span>
+        </div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);font-weight:600;letter-spacing:-.5px">Le savoir-faire du fournil</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.05)">
+        <div class="spec-card reveal" style="background:#142019;padding:48px 36px;text-align:center">
+          <span style="width:11px;height:11px;background:#C9A260;transform:rotate(45deg);display:inline-block;margin-bottom:28px"></span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:600;margin-bottom:16px">Pâtisseries orientales</h3>
+          <p style="font-size:15px;color:#7A7A6A;line-height:1.7">Cornes de gazelle, baklawas, makrouts et douceurs au miel et aux amandes, préparées à la main chaque jour.</p>
+        </div>
+        <div class="spec-card reveal" style="background:#142019;padding:48px 36px;text-align:center">
+          <span style="width:11px;height:11px;background:#C9A260;transform:rotate(45deg);display:inline-block;margin-bottom:28px"></span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:600;margin-bottom:16px">Snacking &amp; Sandwichs</h3>
+          <p style="font-size:15px;color:#7A7A6A;line-height:1.7">Sandwichs garnis, paninis, pizzas et formules du midi à emporter, frais et préparés sur place.</p>
+        </div>
+        <div class="spec-card reveal" style="background:#142019;padding:48px 36px;text-align:center">
+          <span style="width:11px;height:11px;background:#C9A260;transform:rotate(45deg);display:inline-block;margin-bottom:28px"></span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:600;margin-bottom:16px">Pains artisanaux</h3>
+          <p style="font-size:15px;color:#7A7A6A;line-height:1.7">Baguettes tradition, pains spéciaux et viennoiseries pur beurre, cuits au fil de la journée.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMANDE SPECIALE -->
+  <section style="padding:110px 32px;border-top:1px solid rgba(255,255,255,0.05);text-align:center">
+    <div class="reveal" style="max-width:720px;margin:0 auto">
+      <span style="width:9px;height:9px;background:#C9A260;transform:rotate(45deg);display:inline-block;margin-bottom:28px"></span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);font-weight:600;letter-spacing:-.5px;margin-bottom:24px">Commander pour une occasion</h2>
+      <p style="font-size:17px;color:#7A7A6A;line-height:1.7;margin-bottom:40px">Gâteaux d'anniversaire, plateaux pâtisserie, commandes sur mesure — appelez-nous 48h à l'avance.</p>
+      <a href="tel:0228031242" class="btn" style="display:inline-block;background:#5AAF7E;color:#0C1A12;border-radius:4px;padding:16px 36px;font-size:15px;font-weight:600;letter-spacing:.3px;border:1px solid #5AAF7E" style-hover="background:#6cc090;border-color:#6cc090">Appeler pour commander</a>
+    </div>
+  </section>
+
+  <!-- HORAIRES + TROUVER -->
+  <section id="trouver" style="padding:100px 32px;border-top:1px solid rgba(255,255,255,0.05)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,0.05)">
+      <!-- HORAIRES -->
+      <div class="reveal" style="background:#0C1A12;padding:8px 48px 8px 0">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px">
+          <span style="width:8px;height:8px;background:#C9A260;transform:rotate(45deg);display:inline-block"></span>
+          <h2 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:600">Horaires</h2>
+        </div>
+        <div style="font-size:16px">
+          <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span>Lundi</span><span style="color:#7A7A6A">07:00 – 20:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span>Mardi</span><span style="color:#7A7A6A">07:00 – 20:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span>Mercredi</span><span style="color:#7A7A6A">07:00 – 20:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span>Jeudi</span><span style="color:#7A7A6A">07:00 – 20:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05);color:#E06060"><span>Vendredi</span><span>Fermé</span></div>
+          <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span>Samedi</span><span style="color:#7A7A6A">07:00 – 20:00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:16px 0"><span>Dimanche</span><span style="color:#7A7A6A">07:00 – 20:00</span></div>
+        </div>
+      </div>
+      <!-- TROUVER -->
+      <div class="reveal" style="background:#142019;padding:48px">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px">
+          <span style="width:8px;height:8px;background:#C9A260;transform:rotate(45deg);display:inline-block"></span>
+          <h2 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:600">Nous trouver</h2>
+        </div>
+        <p style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#C9A260;margin-bottom:10px">Adresse</p>
+        <p style="font-size:18px;line-height:1.6;margin-bottom:32px">1 Boulevard Salvador Allende<br>44800 Saint-Herblain</p>
+        <p style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#C9A260;margin-bottom:10px">Téléphone</p>
+        <a href="tel:0228031242" style="font-size:24px;color:#5AAF7E;font-weight:500;display:inline-block;margin-bottom:36px">02 28 03 12 42</a>
+        <div>
+          <a href="https://www.google.com/maps/search/?api=1&query=1+Boulevard+Salvador+Allende+44800+Saint-Herblain" target="_blank" rel="noopener" class="btn" style="display:inline-block;border:1px solid rgba(240,235,224,0.5);color:#F0EBE0;border-radius:4px;padding:14px 28px;font-size:15px;font-weight:600;letter-spacing:.3px" style-hover="border-color:#F0EBE0;background:rgba(240,235,224,0.06)">Ouvrir dans Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0A1810;border-top:1px solid rgba(255,255,255,0.05);padding:36px 32px">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:600">Au <span style="color:#C9A260">Fournil</span> du Sud</div>
+      <div style="font-size:13px;color:#7A7A6A;letter-spacing:.3px">© 2026 Au Fournil du Sud — Saint-Herblain</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    // Reveal nav badge once room allows
+    requestAnimationFrame(() => {
+      const badge = this.base && this.base.querySelector('.nav-badge');
+      if (badge && window.innerWidth > 720) badge.style.display = 'inline-block';
+    });
+
+    const root = this.base || document;
+
+    // Stagger hero title words
+    const words = root.querySelectorAll('#heroTitle .word');
+    words.forEach((w, i) => {
+      setTimeout(() => w.classList.add('in'), 350 + i * 120);
+    });
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const el = e.target;
+          const delay = el.dataset.delay ? parseFloat(el.dataset.delay) : 0;
+          setTimeout(() => el.classList.add('in'), delay);
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    // Stagger the 3 spec cards
+    const cards = root.querySelectorAll('.spec-card');
+    cards.forEach((c, i) => { c.dataset.delay = i * 100; });
+
+    root.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
