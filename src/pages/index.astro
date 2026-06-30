@@ -175,6 +175,9 @@ const mapsUrl = "https://www.google.com/maps/search/?api=1&query=1+Boulevard+Sal
       </div>
     </section>
 
+    <!-- TOAST (feedback copie numéro sur ordi) -->
+    <div id="copy-toast" class="copy-toast" role="status" aria-live="polite"></div>
+
     <!-- FOOTER -->
     <footer>
       <div class="footer-inner" data-reveal>
@@ -600,6 +603,29 @@ const mapsUrl = "https://www.google.com/maps/search/?api=1&query=1+Boulevard+Sal
     color: #7A7A6A;
   }
 
+  /* ── Toast copie numéro (ordi) ── */
+  .copy-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    transform: translate(-50%, 16px);
+    z-index: 100;
+    background: #5AAF7E;
+    color: #0C1A12;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 12px 22px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+  }
+  .copy-toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .cards-grid { grid-template-columns: 1fr; }
@@ -645,4 +671,32 @@ const mapsUrl = "https://www.google.com/maps/search/?api=1&query=1+Boulevard+Sal
   setTimeout(() => {
     document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
   }, 60);
+
+  // ── Boutons tél : appel direct sur mobile, copie + confirmation sur ordi ──
+  const canDial = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  const toast = document.getElementById('copy-toast');
+  let toastTimer: number | undefined;
+
+  function showToast(msg: string) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="tel:"]').forEach((link) => {
+    link.addEventListener('click', async (e) => {
+      if (canDial) return; // mobile : laisse le tel: lancer l'appel
+      e.preventDefault();
+      const number = link.getAttribute('href')!.replace('tel:', '');
+      const pretty = link.textContent!.replace(/[^\d\s]/g, '').trim() || number;
+      try {
+        await navigator.clipboard.writeText(pretty);
+        showToast('Numéro copié : ' + pretty);
+      } catch {
+        showToast('Appelez-nous au ' + pretty);
+      }
+    });
+  });
 </script>
