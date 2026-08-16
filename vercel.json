@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://mkboulangeries.fr/au-fournil-du-sud",
+      "permanent": true
+    }
+  ]
+}
