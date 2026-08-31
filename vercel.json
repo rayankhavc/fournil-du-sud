@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://maisonkhalifa.vercel.app/au-fournil-du-sud",
+      "permanent": true
+    },
+    {
+      "source": "/:chemin+",
+      "destination": "https://maisonkhalifa.vercel.app/au-fournil-du-sud",
+      "permanent": true
+    }
+  ]
+}
